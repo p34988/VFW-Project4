@@ -146,10 +146,28 @@ window.addEventListener("DOMContentLoaded", function () {
 	
 	//get the img for the item
 	function grabImg (tName, makeNextList) {
+		var pNum;
+		console.log(tName);
+		switch(tName){
+		
+			case "BMX":
+				pNum = "i1";
+				break;
+			case "Mountain":
+				pNum = "i2";
+				break;
+			case "Cruiser":
+				pNum = "i3";
+				break;
+			case "Road":
+				pNum = "i4";
+				break;
+		}
 		var picLi = document.createElement("li");
 		makeNextList.appendChild(picLi);
-		var newPic = document.createElement("img");
-		var picSrc = newPic.setAttribute("src", "img/" + tName + ".png");
+		var newPic = document.createElement("div");
+		var picSrc = newPic.setAttribute("class", pNum + " tilt");
+		/* newPic.setAttribute("class", "tilt"); */
 		picLi.appendChild(newPic);
 		
 		
