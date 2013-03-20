@@ -1,0 +1,64 @@
+<!doctype html>
+<!--
+	Warren Morris
+	VFW 1303
+	Project 4
+-->
+<html>
+	<head>
+		<meta charset="uft-8" />
+		<meta name="destription" content="Keeping track of assembled bikes." />
+		<meta name="keywords" content="bikes" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<title>Add bike</title> 
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+	<!-- header -->
+		<h1 id="h1">Add a bike</h1>
+	<!--form-->	
+		<form action="#" method="post" id="addbike"> <!-- i questioned the self closing tag while watching week 2's videos -->
+	<!--fieldset-->	
+			<fieldset id="bikefield">
+				<legend>Bike Information</legend>
+				<div class="req"><br />&nbsp;&nbsp;* denotes required field.<br /></div>
+				<ul id="errors"></ul>
+				<ul id="bikeinfo">
+					<li><label for="assembler"><b>*Assembled by:</b></label><br />
+				     	<input type="textfield" id="assembler" /><br />
+				    </li>
+					<li><label for="assdate"><b>*Date assembled: </b></label><br />
+						<input type="date" id="assdate"><br />
+					</li>
+					<li id="bt"><label for="biketype"><b>*Bike Type:</b></label><br />
+						
+					</li>
+					<li><label for="marked"><b>Marked:</b></label><br />
+						<ul>
+			        		<li class="marked"><label for="marked">Yes</label><input type="radio" name="bmarked" id="marked" value="yes" /></li>
+			        		<li class="marked"><label for="marked">No</label><input type="radio" checked name="bmarked" id="marked" value="no" /></li>
+		        		</ul><br />
+		        	</li>
+					<li><label  for="asstime"><b>Assembly time(<i>in minutes</i>):</b></label><br />
+						<input type="range" id="asstime" min="1" max="360" value="1" onchange="asstext.innerHTML=this.value"/><label id="asstext">1</label>
+						<br />
+					</li>
+					<li><label for="comments"><b>Comments:</b></label><br />
+						<textarea id="comments" rows="5" cols="30"></textarea><br />
+					</li>	
+				</ul>
+		<!--submit button-->
+				<input type="button" id="submit" value="Submit bike"  /><br />
+				<input type="hidden" id="versteckt" value="i hate git"/><!-- <br /> -->
+			</fieldset>
+		</form>
+		<!-- data links-->
+		<a href="#" id="clear" class="button2">Clear Bike Data</a>
+		<a href="#" id="displayLink" class="button2">Display Bike Data</a>
+		
+		<!-- i added the link back to this page just to easily reset form, but did a manual reset also, elsewhere -->
+		<a href="additem.html"id="ab" style="display:none;" class="button2"></a><br />
+		<script src="js/main.js" type="text/javascript"></script>
+	</body>
+</html>
