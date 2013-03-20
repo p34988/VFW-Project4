@@ -129,6 +129,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	       var item = JSON.parse(useless);
 	       var makeNextList = document.createElement("ul");
 	       makeLi.appendChild(makeNextList);
+	       grabImg(item.type[1], makeNextList);
 	       for(var k in item){
 	           var makeNextLi = document.createElement("li");
 	           makeNextList.appendChild(makeNextLi);
@@ -142,6 +143,18 @@ window.addEventListener("DOMContentLoaded", function () {
 		
 		
 	}
+	
+	//get the img for the item
+	function grabImg (tName, makeNextList) {
+		var picLi = document.createElement("li");
+		makeNextList.appendChild(picLi);
+		var newPic = document.createElement("img");
+		var picSrc = newPic.setAttribute("src", "img/" + tName + ".png");
+		picLi.appendChild(newPic);
+		
+		
+	}
+	
 	// Creates links for edit/delete items
 	function makeItemControls (key, linksLi) {
 		var eLink = document.createElement("a");
@@ -321,9 +334,9 @@ window.addEventListener("DOMContentLoaded", function () {
 	var bikeTypes = [
 			"--Select Bike Type--",
 			"BMX",
-			"Mountain Bike",
+			"Mountain",
 			"Cruiser",
-			"Road Bike"
+			"Road"
 	];
 	
 	

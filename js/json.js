@@ -30,7 +30,7 @@ var json = {
 	
 		"assembler": ["Assembler:","Ed"],
 		"date": ["Date:","2013-03-01"],
-		"type": ["Type:","Road Bike"],
+		"type": ["Type:","Road"],
 		"marked": ["Marked:","no"],
 		"time": ["Time:","43"],
 		"comments": ["Comments:","90 psi in these tires is crazy."]
@@ -40,7 +40,7 @@ var json = {
 	
 		"assembler": ["Assembler:","Terry"],
 		"date": ["Date:","2010-03-12"],
-		"type": ["Type:","Mountain Bike"],
+		"type": ["Type:","Mountain"],
 		"marked": ["Marked:","no"],
 		"time": ["Time:","360"],
 		"comments": ["Comments:","I'm not sure how to use a wrench."]
