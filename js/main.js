@@ -273,17 +273,17 @@ window.addEventListener("DOMContentLoaded", function () {
 		getDate.style.border = "1px solid black";
 		var errorMsgs = [];
 		if (getType.value === "--Select Bike Type--") {
-			var typeError = "Please choose a bike type.";
+			var typeError = "&bull; Please choose a bike type.";
 			getType.style.border = "1px solid red";
 			errorMsgs.push(typeError);
 		}
 		if (getAssembler.value === "") {
-			var assError = "Please enter Assemblers name."
+			var assError = "&bull; Please enter Assemblers name."
 			getAssembler.style.border = "1px solid red";
 			errorMsgs.push(assError);	
 		}
 		if (getDate.value === "") {
-			var dateError = "Please enter a date."
+			var dateError = "&bull; Please enter a date."
 			getDate.style.border = "1px solid red";
 			errorMsgs.push(dateError);	
 		}
