@@ -94,8 +94,17 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 		if (localStorage.length<1) {
 			$("ab").innerHTML = "Add bike";
+			var pBikes = confirm("There is no bikes to display. Would you like to populate the list?");
+			/*
 			alert("No bike entries to display. Add a bike!!");
 			return;
+			*/
+			if (pBikes) {   /* i didn't really like the idea of forcing it to populate without giving   */  
+				popBikes(); /* me the coice to decline. sometimes i click things not thinking about it. */
+			} else {
+				return;
+			}
+
 			/* this would be a really good spot for a box that informs the user that the displaylist is empty.
 			no one likes obnoxious alerts that pop up, so adding a box when its empty would be better.
 			i might add it later if i have time. */
@@ -277,6 +286,14 @@ window.addEventListener("DOMContentLoaded", function () {
 			storeData(this.key);
 		}
 		
+	}
+	
+	function popBikes () {
+		for (var i in json)	{
+			var uid = "k" + Math.floor(Math.random()*123456);	
+			localStorage.setItem(uid, JSON.stringify(json[i]));
+		}
+			
 	}
 	
 	function grabDate () {
