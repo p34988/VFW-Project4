@@ -66,7 +66,6 @@ window.addEventListener("DOMContentLoaded", function () {
 	function resetForm () {
 		$("assembler").value = "";
 		$("assdate").value = "";
-		/* $("asstime").value = "1"; */
 		grabDate();
 		$("asstext").innerHTML = "1";
 		$("comments").value = "";
@@ -109,7 +108,6 @@ window.addEventListener("DOMContentLoaded", function () {
 			no one likes obnoxious alerts that pop up, so adding a box when its empty would be better.
 			i might add it later if i have time. */
 		} else {
-			
 			$("ab").innerHTML = "Add another bike";
 		}
 		var makeDiv = document.createElement("div");
@@ -140,8 +138,6 @@ window.addEventListener("DOMContentLoaded", function () {
 	       makeItemControls(key, linksLi);
 	    }
 		switchView("1");
-		
-		
 	}
 	
 	//get the img for the item
@@ -149,7 +145,6 @@ window.addEventListener("DOMContentLoaded", function () {
 		var pNum;
 		console.log(tName);
 		switch(tName){
-		
 			case "BMX":
 				pNum = "i1";
 				break;
@@ -167,7 +162,6 @@ window.addEventListener("DOMContentLoaded", function () {
 		makeNextList.appendChild(picLi);
 		var newPic = document.createElement("div");
 		var picSrc = newPic.setAttribute("class", pNum + " tilt");
-		/* newPic.setAttribute("class", "tilt"); */
 		picLi.appendChild(newPic);
 		
 		
@@ -214,7 +208,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	    bike.marked = ["Marked: ", markedVal];
 	    bike.time = ["Time: ", $("asstime").value];
 	    bike.comments = ["Comments: ", $("comments").value];
-	    markedVal = ""
+	    markedVal = "";
 		localStorage.setItem(uid, JSON.stringify(bike));
 		resetForm ();
 		if (newbike === false) {
@@ -224,6 +218,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	//edit item
 	function editItem () {
+		remDiv(); // removing the bikelist while editing
 		var value = localStorage.getItem(this.key);
 		var bike = JSON.parse(value);
 		switchView("0");
@@ -236,30 +231,29 @@ window.addEventListener("DOMContentLoaded", function () {
 		var marked = document.getElementsByName("bmarked");
 		for (i=0;i<marked.length; i++){
 			if (marked[i].value === "yes" && bike.marked[1] === "yes"){
-				/* marked[i].setAttribute("checked", "checked"); *///was giving me problems
 				marked[i].checked = true;
 				console.log(bike.marked + " - " + marked[i].value);
 			} else if (marked[i].value === "no" && bike.marked[1] === "no"){
 				marked[i].checked = true;
-				/* marked[i].setAttribute("checked", "checked"); */
 				console.log(bike.marked + " - " + marked[i].value);
 			}
-			
 		}
-		
 		save.removeEventListener("click", checkBike);
 		$("submit").value = "Edit Bike";
 		$("h1").innerHTML = "Edit Bike";
+		$("biketype").style.border = "1px solid black";
+		$("assembler").style.border = "1px solid black";
+		$("assdate").style.border = "1px solid black";
+		eMsg.style.border = "0px solid red";
+		eMsg.innerHTML = "";
 		var eSubmit = $("submit");
 		eSubmit.addEventListener("click", checkBike);
 		eSubmit.key = this.key;
-
 	}
 	
 	//delete item
 	function deleteItem () {
 		var delPrompt = confirm("Are you sure you would like to remove this entry?");
-		
 		if (delPrompt){
 			localStorage.removeItem(this.key);
 			alert("Entry was deleted!");
@@ -267,64 +261,58 @@ window.addEventListener("DOMContentLoaded", function () {
 		} else {
 			alert("Entry was not deleted!");
 		}
-				
 	}
 	
 	function checkBike (e) {
-	
 		var getAssembler = $("assembler");
 		var getDate = $("assdate");
 		var getType = $("biketype")
-		
 		eMsg.innerHTML = "";
 		getType.style.border = "1px solid black";
 		getAssembler.style.border = "1px solid black";
 		getDate.style.border = "1px solid black";
-		
 		var errorMsgs = [];
-		
 		if (getType.value === "--Select Bike Type--") {
 			var typeError = "Please choose a bike type.";
 			getType.style.border = "1px solid red";
 			errorMsgs.push(typeError);
 		}
-		
 		if (getAssembler.value === "") {
 			var assError = "Please enter Assemblers name."
 			getAssembler.style.border = "1px solid red";
-			errorMsgs.push(assError);
-			
+			errorMsgs.push(assError);	
 		}
 		if (getDate.value === "") {
 			var dateError = "Please enter a date."
 			getDate.style.border = "1px solid red";
-			errorMsgs.push(dateError);
-			
+			errorMsgs.push(dateError);	
 		}
 		/*I don't have an email field but for practice, adding the line from the video
 			var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;			
 		*/
-		
 		if (errorMsgs.length>=1) {
 			for (i=0, j=errorMsgs.length; i<j; i++) {
 				var txt = document.createElement("li");
 				txt.innerHTML = errorMsgs[i];
 				eMsg.appendChild(txt);
+				eMsg.style.border = "1px solid red";
 			}
 			e.preventDefault();
 			return false;
 		} else {
+			getType.style.border = "1px solid black";
+			getAssembler.style.border = "1px solid black";
+			getDate.style.border = "1px solid black";
+			eMsg.style.border = "0px solid red";
 			storeData(this.key);
 		}
-		
 	}
 	
 	function popBikes () {
 		for (var i in json)	{
 			var uid = "k" + Math.floor(Math.random()*123456);	
 			localStorage.setItem(uid, JSON.stringify(json[i]));
-		}
-			
+		}	
 	}
 	
 	function grabDate () {
@@ -342,7 +330,6 @@ window.addEventListener("DOMContentLoaded", function () {
 		var d = dArray[tDate.getDate()];
 		//var di = $("assdate");
 		$("assdate").value = tDate.getFullYear() + "-" + m + "-" + d;
-		 
 	}
 	// variables & run functions
 	
@@ -356,15 +343,10 @@ window.addEventListener("DOMContentLoaded", function () {
 			"Cruiser",
 			"Road"
 	];
-	
-	
 	var markedVal;
 	var eMsg = $("errors");
 	popType();
 	grabDate();
-	
-	
-	
 	var displayData = $('displayLink');
 	displayData.addEventListener("click", showData);
 	var clearData = $('clear');

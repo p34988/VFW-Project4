@@ -23,7 +23,7 @@ var json = {
 		"type": ["Type:","BMX"],
 		"marked": ["Marked:","no"],
 		"time": ["Time:","23"],
-		"comments": ["Comments:","I used to use pegs to transport friends."]
+		"comments": ["Comments:","Back in my day, we didn't have pegs."]
 		
 	},
 	"bike3": {
@@ -45,6 +45,15 @@ var json = {
 		"time": ["Time:","360"],
 		"comments": ["Comments:","I'm not sure how to use a wrench."]
 		
-	}
+	},
+	"bike5": {
 	
+		"assembler": ["Assembler:","Robby"],
+		"date": ["Date:","2010-02-17"],
+		"type": ["Type:","Mountain"],
+		"marked": ["Marked:","yes"],
+		"time": ["Time:","14"],
+		"comments": ["Comments:","No gear adjustment issues."]
+		
+	}
 }
